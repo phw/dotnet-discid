@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-discid", "dotnet-discid\dotnet-discid.csproj", "{7EF95A04-A2EE-479A-972F-198D6D9541F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscIdTests", "DiscIdTests\DiscIdTests.csproj", "{17EB827A-4735-4C4B-82F7-D432EDB05D5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscIdExample", "DiscIdExample\DiscIdExample.csproj", "{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EF95A04-A2EE-479A-972F-198D6D9541F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF95A04-A2EE-479A-972F-198D6D9541F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF95A04-A2EE-479A-972F-198D6D9541F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF95A04-A2EE-479A-972F-198D6D9541F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17EB827A-4735-4C4B-82F7-D432EDB05D5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17EB827A-4735-4C4B-82F7-D432EDB05D5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17EB827A-4735-4C4B-82F7-D432EDB05D5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17EB827A-4735-4C4B-82F7-D432EDB05D5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

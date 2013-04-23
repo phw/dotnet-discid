@@ -8,8 +8,8 @@
         static void Main(string[] args)
         {
             Console.Out.WriteLine(Disc.DefaultDevice);
-            
-            using (var disc = Disc.Read("E:"))
+
+            using (var disc = Disc.Read())
             {
                 Console.Out.WriteLine(disc.Id);
                 Console.In.ReadLine();

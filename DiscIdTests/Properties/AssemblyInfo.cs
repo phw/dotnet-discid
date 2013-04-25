@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DiscIdTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TextKing AG")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DiscIdTests")]
-[assembly: AssemblyCopyright("Copyright © TextKing AG 2013")]
+[assembly: AssemblyCopyright("Copyright © Philipp Wolfer 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

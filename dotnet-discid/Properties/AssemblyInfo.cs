@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("dotnet-discid")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TextKing AG")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("dotnet-discid")]
-[assembly: AssemblyCopyright("Copyright © TextKing AG 2013")]
+[assembly: AssemblyCopyright("Copyright © Philipp Wolfer 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

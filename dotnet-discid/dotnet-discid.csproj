@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiscId.cs" />
+    <Compile Include="Disc.cs" />
     <Compile Include="Lib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

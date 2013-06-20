@@ -7,7 +7,7 @@
     {
         static void Main(string[] args)
         {
-            Console.Out.WriteLine(Disc.DefaultDevice);
+			Console.Out.WriteLine("Using device   : {0}", Disc.DefaultDevice);
 
             using (var disc = Disc.Read())
             {

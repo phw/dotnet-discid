@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-discid", "dotnet-discid\dotnet-discid.csproj", "{7EF95A04-A2EE-479A-972F-198D6D9541F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscIdExample", "DiscIdExample\DiscIdExample.csproj", "{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-discid-example", "dotnet-discid-example\dotnet-discid-example.csproj", "{7FBF7AA0-A240-44A8-8366-4CB9D3C687A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-discid-test", "dotnet-discid-test\dotnet-discid-test.csproj", "{CEA29043-3AAB-4061-A7C0-28768426AF27}"
 EndProject

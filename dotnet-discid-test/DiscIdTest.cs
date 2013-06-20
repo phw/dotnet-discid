@@ -1,18 +1,19 @@
 ﻿namespace DiscIdTests
 {
-    using DiscId;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using System;
+	using NUnit.Framework;
+	using DiscId;
 
-    [TestClass]
+	[TestFixture]
     public class DiscIdTest
     {
-        [TestMethod]
+		[Test]
         public void GetDefaultDeviceTest()
         {
             Assert.IsTrue(!string.IsNullOrEmpty(Disc.DefaultDevice));
         }
 
-        [TestMethod]
+		[Test]
         public void PutTest()
         {
             string discId = "Wn8eRBtfLDfM0qjYPdxrz.Zjs_U-";

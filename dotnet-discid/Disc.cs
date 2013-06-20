@@ -37,11 +37,16 @@ namespace DiscId
             Dispose(false);
         }
 
-        public static Disc Read(string device = null)
+        public static Disc Read(string device = null, Features features = 0)
         {
             var disc = new Disc();
-            disc.ReadInternal(device);
+            disc.ReadInternal(device, features);
             return disc;
+        }
+
+        public static Disc Read(Features features)
+        {
+            return Read(null, features);
         }
 
         public static Disc Put(int firstTrack, int sectors, int[] offsets)
@@ -49,6 +54,21 @@ namespace DiscId
             var disc = new Disc();
             disc.PutInternal(firstTrack, sectors, offsets);
             return disc;
+        }
+
+        public static bool HasFeatures(Features features)
+        {
+            try
+            {
+                bool result = FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Read);
+                result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Mcn);
+                result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Isrc);
+                return result;
+            }
+            catch (EntryPointNotFoundException)
+            {
+                return features == Features.Read;
+            }
         }
 
         public static string DefaultDevice
@@ -127,9 +147,17 @@ namespace DiscId
             GC.SuppressFinalize(this);
         }
 
-        private void ReadInternal(string device = null)
+        private void ReadInternal(string device, Features features)
         {
-            var result = Lib.discid_read(handle, device);
+            int result;
+            try
+            {
+                result = Lib.discid_read_sparse(handle, device, (UInt32)features);
+            }
+            catch (EntryPointNotFoundException)
+            {
+                result = Lib.discid_read(handle, device);
+            }
 
             if (result == 0)
             {

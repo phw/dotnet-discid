@@ -36,8 +36,8 @@ namespace DiscId
         [DllImport(LIBRARY_NAME, CharSet = CharSet.Ansi, CallingConvention = CALLING_CONVENTION)]
         public static extern Int32 discid_read(IntPtr d, string device);
 
-        //[DllImport(LIBRARY_NAME, CharSet = CharSet.Ansi, CallingConvention = CALLING_CONVENTION)]
-        //public static extern Int32 discid_read_sparse(IntPtr d, string device, UInt32 features);
+        [DllImport(LIBRARY_NAME, CharSet = CharSet.Ansi, CallingConvention = CALLING_CONVENTION)]
+        public static extern Int32 discid_read_sparse(IntPtr d, string device, UInt32 features);
 
         [DllImport(LIBRARY_NAME, CharSet = CharSet.Ansi, CallingConvention = CALLING_CONVENTION)]
         public static extern Int32 discid_put(IntPtr d, Int32 first, Int32 last, Int32[] offsets);
@@ -68,6 +68,9 @@ namespace DiscId
 
         [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
         public static extern IntPtr discid_get_default_device();
+
+        [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
+        public static extern Int32 discid_has_feature(UInt32 feature);
 
         [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
         public static extern IntPtr discid_get_version_string();

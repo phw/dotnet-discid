@@ -26,8 +26,11 @@ namespace DiscIdExample
         static void Main(string[] args)
         {
 			Console.Out.WriteLine("Using device   : {0}", Disc.DefaultDevice);
+            Console.Out.WriteLine("Read feature   : {0}", Disc.HasFeatures(Features.Read));
+            Console.Out.WriteLine("MCN feature    : {0}", Disc.HasFeatures(Features.Mcn));
+            Console.Out.WriteLine("ISRC feature   : {0}", Disc.HasFeatures(Features.Isrc));
 
-            using (var disc = Disc.Read())
+            using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
             {
                 Console.Out.WriteLine("DiscId         : {0}", disc.Id);
                 Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);

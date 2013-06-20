@@ -16,7 +16,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace DiscIdTests
+namespace DiscIdTest
 {
 	using System;
 	using NUnit.Framework;
@@ -47,6 +47,12 @@ namespace DiscIdTests
             Assert.AreEqual(firstTrack, disc.FirstTrackNumber);
             Assert.AreEqual(lastTrack, disc.LastTrackNumber);
             Assert.AreEqual(sectors, disc.Sectors);
+        }
+
+        [Test]
+        public void HasReadFeatureTest()
+        {
+            Assert.IsTrue(Disc.HasFeatures(Features.Read));
         }
     }
 }

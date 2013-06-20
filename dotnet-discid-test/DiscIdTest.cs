@@ -41,7 +41,7 @@ namespace DiscIdTest
             int[] offsets = new int[] { 150, 18901, 39738, 59557, 79152, 100126,
                                         124833, 147278, 166336, 182560 };
             
-            var disc = DiscId.Disc.Put(firstTrack, sectors, offsets);
+            var disc = Disc.Put(firstTrack, sectors, offsets);
 
             Assert.AreEqual(discId, disc.Id);
             Assert.AreEqual(firstTrack, disc.FirstTrackNumber);

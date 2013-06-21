@@ -28,7 +28,7 @@ namespace DiscId
 
         private IDictionary<int, Track> tracks;
 
-        private const int MAX_OFFSET_LENGTH = 100;
+        private const int MaxOffsetLength = 100;
         
         private Disc()
         {
@@ -195,7 +195,7 @@ namespace DiscId
         {
             var lastTrack = offsets.Length - 1 + firstTrack;
 
-            var cOffsets = new int[MAX_OFFSET_LENGTH];
+            var cOffsets = new int[MaxOffsetLength];
             cOffsets[0] = sectors;
             offsets.CopyTo(cOffsets, 1);
 

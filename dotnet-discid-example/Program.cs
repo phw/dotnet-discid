@@ -32,6 +32,7 @@ namespace DiscIdExample
 
             using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
             {
+                Console.Out.WriteLine();
                 Console.Out.WriteLine("DiscId         : {0}", disc.Id);
                 Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);
                 Console.Out.WriteLine("MCN            : {0}", disc.Mcn);
@@ -39,6 +40,16 @@ namespace DiscIdExample
                 Console.Out.WriteLine("Last track no. : {0}", disc.LastTrackNumber);
                 Console.Out.WriteLine("Sectors        : {0}", disc.Sectors);
                 Console.Out.WriteLine("Submission URL : {0}", disc.SubmissionUrl);
+
+                Console.Out.WriteLine();
+                foreach (var track in disc.Tracks)
+                {
+                    Console.Out.WriteLine("Track #{0}:", track.Number);
+                    Console.Out.WriteLine("  Offset: {0} sectors", track.Offset);
+                    Console.Out.WriteLine("  Length: {0} sectors", track.Sectors);
+                    Console.Out.WriteLine("  ISRC  : {0}", track.Isrc);
+                }
+
                 Console.In.ReadLine();
             }
         }

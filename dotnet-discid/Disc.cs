@@ -19,17 +19,21 @@
 namespace DiscId
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.InteropServices;
 
     public sealed class Disc : IDisposable
     {
         private IntPtr handle;
 
+        private IDictionary<int, Track> tracks;
+
         private const int MAX_OFFSET_LENGTH = 100;
         
         private Disc()
         {
             handle = Lib.discid_new();
+            tracks = new Dictionary<int, Track>();
         }
 
         ~Disc() 
@@ -138,6 +142,28 @@ namespace DiscId
                 var urlPtr = Lib.discid_get_submission_url(handle);
                 var url = Marshal.PtrToStringAnsi(urlPtr);
                 return new Uri(url);
+            }
+        }
+
+        public IEnumerable<Track> Tracks
+        {
+            get
+            {
+                for (int number = FirstTrackNumber; number <= LastTrackNumber; number++)
+                {
+                    Track track;
+                    if (!this.tracks.TryGetValue(number, out track))
+                    {
+                        int offset = Lib.discid_get_track_offset(handle, number);
+                        int sectors = Lib.discid_get_track_length(handle, number);
+                        var isrcPtr = Lib.discid_get_track_isrc(handle, number);
+                        string isrc = Marshal.PtrToStringAnsi(isrcPtr);
+                        track = new Track(number, offset, sectors, isrc);
+                        this.tracks[number] = track;
+                    }
+
+                    yield return track; 
+                }
             }
         }
 

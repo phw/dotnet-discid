@@ -67,6 +67,15 @@ namespace DiscId
         public static extern Int32 discid_get_sectors(IntPtr d);
 
         [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
+        public static extern Int32 discid_get_track_offset(IntPtr d, Int32 trackNum);
+
+        [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
+        public static extern Int32 discid_get_track_length(IntPtr d, Int32 trackNum);
+
+        [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
+        public static extern IntPtr discid_get_track_isrc(IntPtr d, Int32 trackNum);
+
+        [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]
         public static extern IntPtr discid_get_default_device();
 
         [DllImport(LIBRARY_NAME, CallingConvention = CALLING_CONVENTION)]

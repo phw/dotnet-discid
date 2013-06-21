@@ -16,14 +16,15 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace DiscIdTest
+namespace DiscId.Test
 {
 	using System;
+    using System.Linq;
 	using NUnit.Framework;
 	using DiscId;
 
 	[TestFixture]
-    public class DiscIdTest
+    public class DiscTest
     {
 		[Test]
         public void GetDefaultDeviceTest()
@@ -40,6 +41,8 @@ namespace DiscIdTest
             int sectors = 206535;
             int[] offsets = new int[] { 150, 18901, 39738, 59557, 79152, 100126,
                                         124833, 147278, 166336, 182560 };
+            int[] lengths = new int[] { 18751, 20837, 19819, 19595, 20974,
+                                        24707, 22445, 19058, 16224, 23975 };
             
             var disc = Disc.Put(firstTrack, sectors, offsets);
 
@@ -47,6 +50,8 @@ namespace DiscIdTest
             Assert.AreEqual(firstTrack, disc.FirstTrackNumber);
             Assert.AreEqual(lastTrack, disc.LastTrackNumber);
             Assert.AreEqual(sectors, disc.Sectors);
+            Assert.AreEqual(offsets, disc.Tracks.Select(t => t.Offset).ToArray());
+            Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
         }
 
         [Test]

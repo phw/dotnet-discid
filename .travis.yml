@@ -1,12 +1,9 @@
 language: c
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq mono-devel mono-gmcs nunit-console libdiscid0
+  - sudo apt-get install -qq mono-devel mono-gmcs nunit-console libdiscid0-dev
 env:
-  - LD_LIBRARY_PATH=/usr/lib/
-  - MONO_LOG_LEVEL=debug
+  - LD_LIBRARY_PATH=/usr/lib/:/usr/lib/x86_64-linux-gnu/
 script:
   - xbuild
-  - ls /usr/lib/libdiscid*
-  - ls /usr/lib/libMonoPosixHelper*
   - nunit-console dotnet-discid-test/bin/Debug/dotnet-discid-test.dll

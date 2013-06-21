@@ -1,7 +1,7 @@
 language: c
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq mono-devel nunit-console libdiscid0
+  - sudo apt-get install -qq mono-devel mono-gmcs nunit-console libdiscid0
 script:
   - xbuild
   - nunit-console dotnet-discid-test/bin/Debug/dotnet-discid-test.dll

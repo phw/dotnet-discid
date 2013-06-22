@@ -62,6 +62,7 @@ namespace DiscIdExample
             catch (DiscIdException ex)
             {
                 Console.Out.WriteLine("Could not read disc: {0}.", ex.Message);
+                Console.In.ReadLine();
             }
         }
     }

@@ -20,7 +20,6 @@ namespace DiscId
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.InteropServices;
 
     public sealed class Disc : IDisposable
     {
@@ -62,25 +61,17 @@ namespace DiscId
 
         public static bool HasFeatures(Features features)
         {
-            try
-            {
-                bool result = FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Read);
-                result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Mcn);
-                result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Isrc);
-                return result;
-            }
-            catch (EntryPointNotFoundException)
-            {
-                return features == Features.Read;
-            }
+            bool result = FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Read);
+            result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Mcn);
+            result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Isrc);
+            return result;
         }
 
         public static string DefaultDevice
         {
             get
             {
-                var device = Lib.discid_get_default_device();
-                return Marshal.PtrToStringAnsi(device);
+                return Lib.discid_get_default_device();
             }
         }
 
@@ -88,8 +79,7 @@ namespace DiscId
         {
             get
             {
-                var id = Lib.discid_get_id(handle);
-                return Marshal.PtrToStringAnsi(id);
+                return Lib.discid_get_id(handle);
             }
         }
 
@@ -97,8 +87,7 @@ namespace DiscId
         {
             get
             {
-                var id = Lib.discid_get_mcn(handle);
-                return Marshal.PtrToStringAnsi(id);
+                return Lib.discid_get_mcn(handle);
             }
         }
 
@@ -130,8 +119,7 @@ namespace DiscId
         {
             get
             {
-                var id = Lib.discid_get_freedb_id(handle);
-                return Marshal.PtrToStringAnsi(id);
+                return Lib.discid_get_freedb_id(handle);
             }
         }
 
@@ -139,8 +127,7 @@ namespace DiscId
         {
             get
             {
-                var urlPtr = Lib.discid_get_submission_url(handle);
-                var url = Marshal.PtrToStringAnsi(urlPtr);
+                var url = Lib.discid_get_submission_url(handle);
                 return new Uri(url);
             }
         }
@@ -156,8 +143,7 @@ namespace DiscId
                     {
                         int offset = Lib.discid_get_track_offset(handle, number);
                         int sectors = Lib.discid_get_track_length(handle, number);
-                        var isrcPtr = Lib.discid_get_track_isrc(handle, number);
-                        string isrc = Marshal.PtrToStringAnsi(isrcPtr);
+                        string isrc = Lib.discid_get_track_isrc(handle, number);
                         track = new Track(number, offset, sectors, isrc);
                         this.tracks[number] = track;
                     }
@@ -175,17 +161,7 @@ namespace DiscId
 
         private void ReadInternal(string device, Features features)
         {
-            int result;
-            try
-            {
-                result = Lib.discid_read_sparse(handle, device, (UInt32)features);
-            }
-            catch (EntryPointNotFoundException)
-            {
-                result = Lib.discid_read(handle, device);
-            }
-
-            if (result == 0)
+            if (!Lib.discid_read(handle, device, (UInt32)features))
             {
                 throw new Exception(GetLastError());
             }
@@ -199,9 +175,7 @@ namespace DiscId
             cOffsets[0] = sectors;
             offsets.CopyTo(cOffsets, 1);
 
-            var result = Lib.discid_put(handle, firstTrack, lastTrack, cOffsets);
-
-            if (result == 0)
+            if (!Lib.discid_put(handle, firstTrack, lastTrack, cOffsets))
             {
                 throw new Exception(GetLastError());
             }
@@ -209,8 +183,7 @@ namespace DiscId
 
         private string GetLastError()
         {
-            var msg = Lib.discid_get_error_msg(handle);
-            return Marshal.PtrToStringAnsi(msg);
+            return Lib.discid_get_error_msg(handle);
         }
 
         private void Dispose(bool disposing)

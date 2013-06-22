@@ -33,7 +33,7 @@ namespace DiscId
         {
             if (TestFeatureIsSelected(featureList, testForFeature))
             {
-                return Lib.discid_has_feature((UInt32)testForFeature) == 1;
+                return Lib.discid_has_feature((UInt32)testForFeature);
             }
 
             // Feature not set

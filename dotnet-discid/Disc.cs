@@ -75,6 +75,14 @@ namespace DiscId
             }
         }
 
+        public static string LibdiscidVersion
+        {
+            get
+            {
+                return Lib.discid_get_version_string();
+            }
+        }
+
         public string Id
         {
             get

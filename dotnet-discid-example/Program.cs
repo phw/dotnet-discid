@@ -25,10 +25,14 @@ namespace DiscIdExample
     {
         static void Main(string[] args)
         {
-			Console.Out.WriteLine("Using device   : {0}", Disc.DefaultDevice);
-            Console.Out.WriteLine("Read feature   : {0}", Disc.HasFeatures(Features.Read));
-            Console.Out.WriteLine("MCN feature    : {0}", Disc.HasFeatures(Features.Mcn));
-            Console.Out.WriteLine("ISRC feature   : {0}", Disc.HasFeatures(Features.Isrc));
+            Console.Out.WriteLine("libdiscid version: {0}", Disc.LibdiscidVersion);
+            Console.Out.WriteLine("Read feature     : {0}", Disc.HasFeatures(Features.Read));
+            Console.Out.WriteLine("MCN feature      : {0}", Disc.HasFeatures(Features.Mcn));
+            Console.Out.WriteLine("ISRC feature     : {0}", Disc.HasFeatures(Features.Isrc));
+            Console.Out.WriteLine("All features     : {0}", Disc.HasFeatures(Features.Read | Features.Mcn | Features.Isrc));
+
+            string device = args.Length > 0 ? args[0] : Disc.DefaultDevice;
+            Console.Out.WriteLine("Using device     : {0}", device);
 
             using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
             {

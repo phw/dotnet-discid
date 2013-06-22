@@ -14,4 +14,7 @@
     <copyright>Copyright 2013</copyright>
     <tags>libdiscid discid CD audio MusicBrainz</tags>
   </metadata>
+  <files>
+    <file src="bin\Debug\discid.dll" target="lib" />
+  </files>
 </package>

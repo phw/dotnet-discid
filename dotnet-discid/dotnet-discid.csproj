@@ -61,5 +61,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="dotnet-discid.nuspec" />
   </ItemGroup>
 </Project>

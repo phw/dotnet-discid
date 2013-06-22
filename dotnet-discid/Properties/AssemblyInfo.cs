@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("dotnet-discid")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription(".NET bindings for MusicBrainz libdiscid.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Philipp Wolfer")]
 [assembly: AssemblyProduct("dotnet-discid")]
 [assembly: AssemblyCopyright("Copyright © Philipp Wolfer 2013")]
 [assembly: AssemblyTrademark("")]

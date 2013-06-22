@@ -7,6 +7,7 @@
 # Build results
 [Bb]in/
 [Oo]bj/
+*.nupkg
 
 # Test results
 */test-results/*

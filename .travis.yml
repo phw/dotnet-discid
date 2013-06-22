@@ -6,4 +6,5 @@ env:
   - LD_LIBRARY_PATH=/usr/lib/:/usr/lib/x86_64-linux-gnu/
 script:
   - xbuild
+  - echo "1" > dotnet-discid-example/bin/Debug/DiscIdExample.exe
   - nunit-console dotnet-discid-test/bin/Debug/dotnet-discid-test.dll

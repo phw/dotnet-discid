@@ -171,7 +171,7 @@ namespace DiscId
         {
             if (!Lib.discid_read(handle, device, (UInt32)features))
             {
-                throw new Exception(GetLastError());
+                throw new DiscIdException(GetLastError());
             }
         }
 
@@ -185,7 +185,7 @@ namespace DiscId
 
             if (!Lib.discid_put(handle, firstTrack, lastTrack, cOffsets))
             {
-                throw new Exception(GetLastError());
+                throw new DiscIdException(GetLastError());
             }
         }
 

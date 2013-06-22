@@ -34,27 +34,34 @@ namespace DiscIdExample
             string device = args.Length > 0 ? args[0] : Disc.DefaultDevice;
             Console.Out.WriteLine("Using device     : {0}", device);
 
-            using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
+            try
             {
-                Console.Out.WriteLine();
-                Console.Out.WriteLine("DiscId         : {0}", disc.Id);
-                Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);
-                Console.Out.WriteLine("MCN            : {0}", disc.Mcn);
-                Console.Out.WriteLine("First track no.: {0}", disc.FirstTrackNumber);
-                Console.Out.WriteLine("Last track no. : {0}", disc.LastTrackNumber);
-                Console.Out.WriteLine("Sectors        : {0}", disc.Sectors);
-                Console.Out.WriteLine("Submission URL : {0}", disc.SubmissionUrl);
-
-                Console.Out.WriteLine();
-                foreach (var track in disc.Tracks)
+                using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
                 {
-                    Console.Out.WriteLine("Track #{0}:", track.Number);
-                    Console.Out.WriteLine("  Offset: {0} sectors", track.Offset);
-                    Console.Out.WriteLine("  Length: {0} sectors", track.Sectors);
-                    Console.Out.WriteLine("  ISRC  : {0}", track.Isrc);
-                }
+                    Console.Out.WriteLine();
+                    Console.Out.WriteLine("DiscId         : {0}", disc.Id);
+                    Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);
+                    Console.Out.WriteLine("MCN            : {0}", disc.Mcn);
+                    Console.Out.WriteLine("First track no.: {0}", disc.FirstTrackNumber);
+                    Console.Out.WriteLine("Last track no. : {0}", disc.LastTrackNumber);
+                    Console.Out.WriteLine("Sectors        : {0}", disc.Sectors);
+                    Console.Out.WriteLine("Submission URL : {0}", disc.SubmissionUrl);
 
-                Console.In.ReadLine();
+                    Console.Out.WriteLine();
+                    foreach (var track in disc.Tracks)
+                    {
+                        Console.Out.WriteLine("Track #{0}:", track.Number);
+                        Console.Out.WriteLine("  Offset: {0} sectors", track.Offset);
+                        Console.Out.WriteLine("  Length: {0} sectors", track.Sectors);
+                        Console.Out.WriteLine("  ISRC  : {0}", track.Isrc);
+                    }
+
+                    Console.In.ReadLine();
+                }
+            }
+            catch (DiscIdException ex)
+            {
+                Console.Out.WriteLine("Could not read disc: {0}.", ex.Message);
             }
         }
     }

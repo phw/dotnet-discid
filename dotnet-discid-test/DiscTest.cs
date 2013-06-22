@@ -55,6 +55,24 @@ namespace DiscId.Test
         }
 
         [Test]
+        public void PutErrorTest()
+        {
+            Assert.Throws<DiscIdException>(delegate()
+            {
+                Disc.Put(-1, 0, new int[] {});
+            });
+        }
+
+        [Test]
+        public void ReadErrorTest()
+        {
+            Assert.Throws<DiscIdException>(delegate()
+            {
+                Disc.Read("invalid_device_string");
+            });
+        }
+
+        [Test]
         public void HasReadFeatureTest()
         {
             Assert.IsTrue(Disc.HasFeatures(Features.Read));

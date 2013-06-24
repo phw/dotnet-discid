@@ -25,12 +25,12 @@ namespace DiscId
     {
         private const string LibraryName = "discid.dll";
 
-        private const CallingConvention CallingConvention = CallingConvention.Cdecl;
+        private const CallingConvention LibraryCallingConvention = CallingConvention.Cdecl;
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern IntPtr discid_new();
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern void discid_free(IntPtr d);
 
         public static bool discid_read(IntPtr d, string device, UInt32 features)
@@ -87,19 +87,19 @@ namespace DiscId
             }
         }
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern Int32 discid_get_first_track_num(IntPtr d);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern Int32 discid_get_last_track_num(IntPtr d);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern Int32 discid_get_sectors(IntPtr d);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern Int32 discid_get_track_offset(IntPtr d, Int32 trackNum);
 
-        [DllImport(LibraryName, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, CallingConvention = LibraryCallingConvention)]
         public static extern Int32 discid_get_track_length(IntPtr d, Int32 trackNum);
 
         public static string discid_get_track_isrc(IntPtr d, Int32 trackNum)
@@ -147,40 +147,40 @@ namespace DiscId
         }
 
         //----------------
-        [DllImport(LibraryName, EntryPoint = "discid_read", CharSet = CharSet.Ansi, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_read", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_read(IntPtr d, string device);
 
-        [DllImport(LibraryName, EntryPoint = "discid_read_sparse", CharSet = CharSet.Ansi, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_read_sparse", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_read_sparse(IntPtr d, string device, UInt32 features);
 
-        [DllImport(LibraryName, EntryPoint = "discid_put", CharSet = CharSet.Ansi, CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_put", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_put(IntPtr d, Int32 first, Int32 last, Int32[] offsets);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_error_msg", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_error_msg", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_error_msg(IntPtr d);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_id", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_id", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_id(IntPtr d);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_freedb_id", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_freedb_id", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_freedb_id(IntPtr d);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_submission_url", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_submission_url", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_submission_url(IntPtr d);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_mcn", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_mcn", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_mcn(IntPtr d);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_track_isrc", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_track_isrc", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_track_isrc(IntPtr d, Int32 trackNum);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_default_device", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_default_device", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_default_device();
 
-        [DllImport(LibraryName, EntryPoint = "discid_has_feature", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_has_feature", CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_has_feature(UInt32 feature);
 
-        [DllImport(LibraryName, EntryPoint = "discid_get_version_string", CallingConvention = CallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_get_version_string", CallingConvention = LibraryCallingConvention)]
         private static extern IntPtr internal_discid_get_version_string();
     }
 }

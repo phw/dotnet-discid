@@ -21,11 +21,12 @@ namespace DiscId
     using System;
 
     [Flags]
-    public enum Features {
+    public enum Features
+    {
         Read = 1 << 0,
         Mcn = 1 << 1,
         Isrc = 1 << 2,
-    };
+    }
 
     internal static class FeatureUtils
     {

@@ -23,12 +23,12 @@ namespace DiscId
 
     public sealed class Disc : IDisposable
     {
+        private const int MaxOffsetLength = 100;
+
         private IntPtr handle;
 
         private IDictionary<int, Track> tracks;
 
-        private const int MaxOffsetLength = 100;
-        
         private Disc()
         {
             handle = Lib.discid_new();

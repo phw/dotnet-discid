@@ -1,0 +1,4 @@
+# Changelog
+
+## 0.1.2 (2013-06-28)
+* First public NuGet release.

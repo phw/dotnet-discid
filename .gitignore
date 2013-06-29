@@ -3,6 +3,8 @@
 *.user
 *.userprefs
 *.sln.docstates
+dotnet-discid/NuGet/win*/*
+StyleCop.Cache
 
 # Build results
 [Bb]in/

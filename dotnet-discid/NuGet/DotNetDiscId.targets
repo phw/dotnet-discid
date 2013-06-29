@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="DiscIdCopyNativeWin32"
+          Condition="'$(Platform)' == 'x86' or '$(Platform)' == 'AnyCPU'"
+          AfterTargets="AfterBuild">
+    <Message Text="Copying x86 discid.dll..." />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\packages\DotNetDiscId.0.1.1.1\build\native\win32\discid.dll"
+          DestinationFolder="$(TargetDir)"
+          SkipUnchangedFiles="true"></Copy>
+  </Target>
+  <Target Name="DiscIdCopyNativeWin64"
+          Condition="'$(Platform)' == 'x64'"
+          AfterTargets="AfterBuild">
+    <Message Text="Copying x64 discid.dll..." />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\packages\DotNetDiscId.0.1.1.1\build\native\win64\discid.dll"
+          DestinationFolder="$(TargetDir)"
+          SkipUnchangedFiles="true"></Copy>
+  </Target>
+</Project>

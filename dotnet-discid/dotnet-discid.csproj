@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,10 +38,15 @@
   <ItemGroup>
     <Compile Include="Disc.cs" />
     <Compile Include="Lib.cs" />
+    <None Include="NuGet\DotNetDiscId.targets" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features.cs" />
     <Compile Include="Track.cs" />
     <Compile Include="DiscIdException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DotNetDiscId.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -50,6 +56,14 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="CopyNativeWin32Dll" Condition="Exists('$(MSBuildProjectDirectory)\NuGet\win32\discid.dll')" AfterTargets="AfterBuild">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\NuGet\win32\discid.dll" DestinationFolder="$(TargetDir)\win32" SkipUnchangedFiles="true">
+    </Copy>
+  </Target>
+  <Target Name="CopyNativeWin64Dll" Condition="Exists('$(MSBuildProjectDirectory)\NuGet\win64\discid.dll')" AfterTargets="AfterBuild">
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\NuGet\win64\discid.dll" DestinationFolder="$(TargetDir)\win64" SkipUnchangedFiles="true">
+    </Copy>
+  </Target>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -59,8 +73,4 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="dotnet-discid.nuspec" />
-  </ItemGroup>
 </Project>

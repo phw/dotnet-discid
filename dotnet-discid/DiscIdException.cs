@@ -21,6 +21,7 @@ namespace DiscId
     using System;
     using System.Runtime.Serialization;
 
+    [Serializable]
     public class DiscIdException : Exception, ISerializable
     {
         public DiscIdException()

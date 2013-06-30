@@ -36,7 +36,7 @@ namespace DiscIdExample
 
             try
             {
-                using (var disc = Disc.Read(Features.Mcn | Features.Isrc))
+                using (var disc = Disc.Read(device, Features.Mcn | Features.Isrc))
                 {
                     Console.Out.WriteLine();
                     Console.Out.WriteLine("DiscId         : {0}", disc.Id);

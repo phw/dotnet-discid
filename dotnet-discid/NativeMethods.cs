@@ -146,13 +146,13 @@ namespace DiscId
             }
         }
 
-        [DllImport(LibraryName, EntryPoint = "discid_read", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
-        private static extern Int32 internal_discid_read(IntPtr d, string device);
+        [DllImport(LibraryName, EntryPoint = "discid_read", CallingConvention = LibraryCallingConvention, BestFitMapping = false)]
+        private static extern Int32 internal_discid_read(IntPtr d, [MarshalAs(UnmanagedType.LPStr)]string device);
 
-        [DllImport(LibraryName, EntryPoint = "discid_read_sparse", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
-        private static extern Int32 internal_discid_read_sparse(IntPtr d, string device, UInt32 features);
+        [DllImport(LibraryName, EntryPoint = "discid_read_sparse", CallingConvention = LibraryCallingConvention, BestFitMapping = false)]
+        private static extern Int32 internal_discid_read_sparse(IntPtr d, [MarshalAs(UnmanagedType.LPStr)]string device, UInt32 features);
 
-        [DllImport(LibraryName, EntryPoint = "discid_put", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
+        [DllImport(LibraryName, EntryPoint = "discid_put", CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_put(IntPtr d, Int32 first, Int32 last, Int32[] offsets);
 
         [DllImport(LibraryName, EntryPoint = "discid_get_error_msg", CallingConvention = LibraryCallingConvention)]

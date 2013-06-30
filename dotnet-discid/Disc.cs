@@ -31,7 +31,7 @@ namespace DiscId
 
         private Disc()
         {
-            handle = Lib.discid_new();
+            handle = NativeMethods.discid_new();
             tracks = new Dictionary<int, Track>();
         }
 
@@ -81,7 +81,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_default_device();
+                return NativeMethods.discid_get_default_device();
             }
         }
 
@@ -89,7 +89,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_version_string();
+                return NativeMethods.discid_get_version_string();
             }
         }
 
@@ -97,7 +97,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_id(handle);
+                return NativeMethods.discid_get_id(handle);
             }
         }
 
@@ -105,7 +105,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_mcn(handle);
+                return NativeMethods.discid_get_mcn(handle);
             }
         }
 
@@ -113,7 +113,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_first_track_num(handle);
+                return NativeMethods.discid_get_first_track_num(handle);
             }
         }
 
@@ -121,7 +121,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_last_track_num(handle);
+                return NativeMethods.discid_get_last_track_num(handle);
             }
         }
 
@@ -129,7 +129,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_sectors(handle);
+                return NativeMethods.discid_get_sectors(handle);
             }
         }
 
@@ -137,7 +137,7 @@ namespace DiscId
         {
             get
             {
-                return Lib.discid_get_freedb_id(handle);
+                return NativeMethods.discid_get_freedb_id(handle);
             }
         }
 
@@ -145,7 +145,7 @@ namespace DiscId
         {
             get
             {
-                var url = Lib.discid_get_submission_url(handle);
+                var url = NativeMethods.discid_get_submission_url(handle);
                 return new Uri(url);
             }
         }
@@ -159,9 +159,9 @@ namespace DiscId
                     Track track;
                     if (!this.tracks.TryGetValue(number, out track))
                     {
-                        int offset = Lib.discid_get_track_offset(handle, number);
-                        int sectors = Lib.discid_get_track_length(handle, number);
-                        string isrc = Lib.discid_get_track_isrc(handle, number);
+                        int offset = NativeMethods.discid_get_track_offset(handle, number);
+                        int sectors = NativeMethods.discid_get_track_length(handle, number);
+                        string isrc = NativeMethods.discid_get_track_isrc(handle, number);
                         track = new Track(number, offset, sectors, isrc);
                         this.tracks[number] = track;
                     }
@@ -179,7 +179,7 @@ namespace DiscId
 
         private void ReadInternal(string device, Features features)
         {
-            if (!Lib.discid_read(handle, device, (UInt32)features))
+            if (!NativeMethods.discid_read(handle, device, (UInt32)features))
             {
                 throw new DiscIdException(GetLastError());
             }
@@ -193,7 +193,7 @@ namespace DiscId
             cOffsets[0] = sectors;
             offsets.CopyTo(cOffsets, 1);
 
-            if (!Lib.discid_put(handle, firstTrack, lastTrack, cOffsets))
+            if (!NativeMethods.discid_put(handle, firstTrack, lastTrack, cOffsets))
             {
                 throw new DiscIdException(GetLastError());
             }
@@ -201,14 +201,14 @@ namespace DiscId
 
         private string GetLastError()
         {
-            return Lib.discid_get_error_msg(handle);
+            return NativeMethods.discid_get_error_msg(handle);
         }
 
         private void Dispose(bool disposing)
         {
             if (handle != IntPtr.Zero) 
             {
-                Lib.discid_free(handle);
+                NativeMethods.discid_free(handle);
                 handle = IntPtr.Zero;
             }
         }

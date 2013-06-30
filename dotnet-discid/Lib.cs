@@ -146,7 +146,6 @@ namespace DiscId
             }
         }
 
-        //----------------
         [DllImport(LibraryName, EntryPoint = "discid_read", CharSet = CharSet.Ansi, CallingConvention = LibraryCallingConvention)]
         private static extern Int32 internal_discid_read(IntPtr d, string device);
 

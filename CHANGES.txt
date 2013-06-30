@@ -1,4 +1,9 @@
 # Changelog
 
+## 0.2.0 (2013-06-30)
+* Signed assembly.
+* Internal code cleanup.
+* Provide a source and binary release.
+
 ## 0.1.2 (2013-06-28)
 * First public NuGet release.

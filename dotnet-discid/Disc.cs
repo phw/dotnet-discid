@@ -40,16 +40,26 @@ namespace DiscId
             Dispose(false);
         }
 
-        public static Disc Read(string device = null, Features features = 0)
+        public static Disc Read()
         {
-            var disc = new Disc();
-            disc.ReadInternal(device, features);
-            return disc;
+            return Read(null, 0);
+        }
+
+        public static Disc Read(string device)
+        {
+            return Read(device, 0);
         }
 
         public static Disc Read(Features features)
         {
             return Read(null, features);
+        }
+
+        public static Disc Read(string device, Features features)
+        {
+            var disc = new Disc();
+            disc.ReadInternal(device, features);
+            return disc;
         }
 
         public static Disc Put(int firstTrack, int sectors, int[] offsets)

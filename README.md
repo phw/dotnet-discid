@@ -23,6 +23,9 @@ recommended to ship the discid.dll in your project. If you are using Mono on oth
 platforms such as Linux or OSX you can use a system wide installation of libdiscid, e.g.
 installed using the platform's package manager.
 
+Source and binary releases of dotnet-discid are available at:
+http://users.musicbrainz.org/~outsidecontext/dotnet-discid/
+
 ## Usage
 *Note*: dotnet-discid is still under development. Not all features of libdiscid are supported
 and the interface is not yet stable. The basic disc ID calculation is implemented, though, and
@@ -55,4 +58,4 @@ Please report any issues on the
 [issue tracker](https://github.com/phw/dotnet-discid/issues).
 
 ## License
-ruby-discid is released under the GNU Lesser General Public License Version 3. See LICENSE.txt for details.
+dotnet-discid is released under the GNU Lesser General Public License Version 3. See LICENSE.txt for details.

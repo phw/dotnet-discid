@@ -77,5 +77,12 @@ namespace DiscId.Test
         {
             Assert.IsTrue(Disc.HasFeatures(Features.Read));
         }
+
+        [Test]
+        public void GetFeatureListTest()
+        {
+			var features = Disc.GetFeatureList();
+			Assert.IsTrue(features.Contains(Features.Read));
+        }
     }
 }

@@ -77,6 +77,20 @@ namespace DiscId
             return result;
         }
 
+        public static IEnumerable<Features> GetFeatureList()
+        {
+            var result = new List<Features>();
+            foreach (Features feature in Enum.GetValues(typeof(Features)))
+            {
+                if (NativeMethods.discid_has_feature((UInt32)feature))
+                {
+                    result.Add(feature);
+                }
+            }
+
+            return result;
+        }
+
         public static string DefaultDevice
         {
             get

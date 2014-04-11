@@ -9,6 +9,10 @@ the library can extract the MCN/UPC/EAN and the ISRCs from disc.
 * .NET or Mono
 * libdiscid >= 0.1.0
 
+To utilize all features you will need libdiscid 0.5.0 or later. The libdiscid
+[feature matrix](http://musicbrainz.org/doc/libdiscid#Feature_Matrix) shows which
+features are available in each version.
+
 ## Installation
 If you are using Visual Studio the easiest way to install and use dotnet-discid is by
 installing the NuGet package from https://nuget.org/packages/DotNetDiscId/ . The
@@ -27,9 +31,11 @@ Source and binary releases of dotnet-discid are available at:
 http://users.musicbrainz.org/~outsidecontext/dotnet-discid/
 
 ## Usage
-*Note*: dotnet-discid is still under development. Not all features of libdiscid are supported
-and the interface is not yet stable. The basic disc ID calculation is implemented, though, and
-should not change drastically for a final release.
+In order to use dotnet-discid you have to reference the DotNetDiscId.dll assembly in
+your project and make sure the native discid library is available (see notes above).
+
+Below is a simple usage example. The dotnet-discid-example project provides a more
+[complete example](https://github.com/phw/dotnet-discid/blob/master/dotnet-discid-example/Program.cs).
 
     try
     { 

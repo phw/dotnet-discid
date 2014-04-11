@@ -1,4 +1,4 @@
-﻿//  Author:
+﻿﻿﻿//  Author:
 //       Philipp Wolfer <ph.wolfer@gmail.com>
 //
 //  Copyright (c) 2013 Philipp Wolfer
@@ -18,21 +18,21 @@
 
 namespace DiscId.Test
 {
-	using System;
+    using System;
     using System.Linq;
-	using NUnit.Framework;
-	using DiscId;
+    using NUnit.Framework;
+    using DiscId;
 
-	[TestFixture]
+    [TestFixture]
     public class DiscTest
     {
-		[Test]
+        [Test]
         public void GetDefaultDeviceTest()
         {
             Assert.IsTrue(!string.IsNullOrEmpty(Disc.DefaultDevice));
         }
 
-		[Test]
+        [Test]
         public void PutTest()
         {
             string discId = "Wn8eRBtfLDfM0qjYPdxrz.Zjs_U-";
@@ -54,22 +54,16 @@ namespace DiscId.Test
             Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
         }
 
-        [Test]
+		[Test, ExpectedException(typeof(DiscIdException))]
         public void PutErrorTest()
         {
-            Assert.Throws<DiscIdException>(delegate()
-            {
-                Disc.Put(-1, 0, new int[] {});
-            });
+            Disc.Put(-1, 0, new int[] {});
         }
 
-        [Test]
+		[Test, ExpectedException(typeof(DiscIdException))]
         public void ReadErrorTest()
         {
-            Assert.Throws<DiscIdException>(delegate()
-            {
-                Disc.Read("invalid_device_string");
-            });
+            Disc.Read("invalid_device_string");
         }
 
         [Test]

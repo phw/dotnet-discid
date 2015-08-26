@@ -1,5 +1,5 @@
 # .NET bindings for MusicBrainz libdiscid
-[![Build Status](https://travis-ci.org/phw/dotnet-discid.svg?branch=master)](https://travis-ci.org/phw/dotnet-discid) 
+[![Build Status](https://travis-ci.org/phw/dotnet-discid.svg?branch=master)](https://travis-ci.org/phw/dotnet-discid) [![NuGet version](https://badge.fury.io/nu/DotNetDiscId.svg)](http://badge.fury.io/nu/DotNetDiscId)
 
 ## About
 dotnet-discid provides .NET bindings for the MusicBrainz DiscID library libdiscid.

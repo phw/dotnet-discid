@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/phw/dotnet-discid.svg?branch=master)](https://travis-ci.org/phw/dotnet-discid) [![NuGet version](https://badge.fury.io/nu/DotNetDiscId.svg)](http://badge.fury.io/nu/DotNetDiscId)
 
 ## About
-dotnet-discid provides .NET bindings for the MusicBrainz DiscID library libdiscid.
+dotnet-discid provides .NET bindings for the MusicBrainz DiscID library [libdiscid](https://github.com/metabrainz/libdiscid).
 It allows calculating DiscIDs (MusicBrainz and freedb) for Audio CDs. Additionally
 the library can extract the MCN/UPC/EAN and the ISRCs from disc.
 

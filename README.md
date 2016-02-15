@@ -38,24 +38,26 @@ your project and make sure the native discid library is available (see notes abo
 Below is a simple usage example. The dotnet-discid-example project provides a more
 [complete example](https://github.com/phw/dotnet-discid/blob/master/dotnet-discid-example/Program.cs).
 
-    try
-    { 
-        string device = DiscId.Disc.DefaultDevice;
-        using (var disc = DiscId.Disc.Read(device, Features.Mcn | Features.Isrc))
-        {
-            Console.Out.WriteLine("DiscId         : {0}", disc.Id);
-            Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);
-            Console.Out.WriteLine("MCN            : {0}", disc.Mcn);
-            Console.Out.WriteLine("First track no.: {0}", disc.FirstTrackNumber);
-            Console.Out.WriteLine("Last track no. : {0}", disc.LastTrackNumber);
-            Console.Out.WriteLine("Sectors        : {0}", disc.Sectors);
-            Console.Out.WriteLine("Submission URL : {0}", disc.SubmissionUrl);
-        }
-    }
-    catch (DiscIdException ex)
+```C#
+try
+{ 
+    string device = DiscId.Disc.DefaultDevice;
+    using (var disc = DiscId.Disc.Read(device, Features.Mcn | Features.Isrc))
     {
-        Console.Out.WriteLine("Could not read disc: {0}.", ex.Message);
+        Console.Out.WriteLine("DiscId         : {0}", disc.Id);
+        Console.Out.WriteLine("FreeDB ID      : {0}", disc.FreedbId);
+        Console.Out.WriteLine("MCN            : {0}", disc.Mcn);
+        Console.Out.WriteLine("First track no.: {0}", disc.FirstTrackNumber);
+        Console.Out.WriteLine("Last track no. : {0}", disc.LastTrackNumber);
+        Console.Out.WriteLine("Sectors        : {0}", disc.Sectors);
+        Console.Out.WriteLine("Submission URL : {0}", disc.SubmissionUrl);
     }
+}
+catch (DiscIdException ex)
+{
+    Console.Out.WriteLine("Could not read disc: {0}.", ex.Message);
+}
+```
 
 ## Contribute
 The source code for dotnet-discid is available on

@@ -16,7 +16,7 @@
   </metadata>
   <files>
     <file src="NuGet\DotNetDiscId.targets" target="build" />
-    <file src="NuGet\win32\discid.dll" target="build\native\win32" />
-    <file src="NuGet\win64\discid.dll" target="build\native\win64" />
+    <file src="NuGet\native\win32\discid.dll" target="build\native\win32" />
+    <file src="NuGet\native\win64\discid.dll" target="build\native\win64" />
   </files>
 </package>

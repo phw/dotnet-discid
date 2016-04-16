@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Disc.cs" />
     <Compile Include="NativeMethods.cs" />
+    <None Include="NuGet\build-nuget-package.targets" />
     <None Include="NuGet\DotNetDiscId.targets" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Features.cs" />
@@ -59,14 +60,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="CopyNativeWin32Dll" Condition="Exists('$(MSBuildProjectDirectory)\NuGet\win32\discid.dll')" AfterTargets="AfterBuild">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\NuGet\win32\discid.dll" DestinationFolder="$(TargetDir)\win32" SkipUnchangedFiles="true">
-    </Copy>
-  </Target>
-  <Target Name="CopyNativeWin64Dll" Condition="Exists('$(MSBuildProjectDirectory)\NuGet\win64\discid.dll')" AfterTargets="AfterBuild">
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\NuGet\win64\discid.dll" DestinationFolder="$(TargetDir)\win64" SkipUnchangedFiles="true">
-    </Copy>
-  </Target>
+  <Import Project="NuGet\DotNetDiscId.targets" />
+  <Import Project="NuGet\build-nuget-package.targets" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>

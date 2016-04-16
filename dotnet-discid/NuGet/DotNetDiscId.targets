@@ -9,7 +9,7 @@
       <NativeFolder Condition="'$(Platform)' == 'x64'">win64</NativeFolder>
       <!-- Any CPU is trickier; assume 64-bit except if 32-bit is preferred and/or we're on a 32-bit OS. -->
       <NativeFolder Condition="'$(Platform)' == 'AnyCPU'">win64</NativeFolder>
-      <NativeFolder Condition="'$(Platform)' == 'AnyCPU' and $(Prefer32Bit)">win32</NativeFolder>
+      <NativeFolder Condition="'$(Platform)' == 'AnyCPU' and '$(Prefer32Bit)' == 'true'">win32</NativeFolder>
       <NativeFolder Condition="'$(Platform)' == 'AnyCPU' and '$(MSBuildExtensionsPath64)' == ''">win32</NativeFolder>
     </PropertyGroup>
     <ItemGroup>

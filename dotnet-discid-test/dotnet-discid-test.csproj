@@ -40,14 +40,15 @@
     <Compile Include="TrackTest.cs" />
     <Compile Include="DiscTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\dotnet-discid\NuGet\DotNetDiscId.targets" />
   <ItemGroup>
     <ProjectReference Include="..\dotnet-discid\dotnet-discid.csproj">
       <Project>{7EF95A04-A2EE-479A-972F-198D6D9541F9}</Project>
       <Name>dotnet-discid</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

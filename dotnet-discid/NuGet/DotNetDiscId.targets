@@ -5,17 +5,19 @@
       <!-- Unconditional Fallback -->
       <NativeFolder>unknown</NativeFolder>
       <!-- Simple Cases -->
-      <NativeFolder Condition="'$(Platform)' == 'x86'">win32</NativeFolder>
-      <NativeFolder Condition="'$(Platform)' == 'x64'">win64</NativeFolder>
+      <NativeFolder Condition="'$(OS)' == 'Unix'">xbuild-linux-or-osx</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'x86'">win32</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'x64'">win64</NativeFolder>
       <!-- Any CPU is trickier; assume 64-bit except if 32-bit is preferred and/or we're on a 32-bit OS. -->
-      <NativeFolder Condition="'$(Platform)' == 'AnyCPU'">win64</NativeFolder>
-      <NativeFolder Condition="'$(Platform)' == 'AnyCPU' and '$(Prefer32Bit)' == 'true'">win32</NativeFolder>
-      <NativeFolder Condition="'$(Platform)' == 'AnyCPU' and '$(MSBuildExtensionsPath64)' == ''">win32</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU'">win64</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU' and '$(Prefer32Bit)' == 'true'">win32</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU' and '$(MSBuildExtensionsPath64)' == ''">win32</NativeFolder>
     </PropertyGroup>
     <ItemGroup>
       <ExtraFiles Include="$(MSBuildThisFileDirectory)native\$(NativeFolder)\*"/>
     </ItemGroup>
-    <Warning Condition="'@(ExtraFiles)' == ''" Text="No native libdiscid files available in this package; you'll have to obtain them yourself."/>
+    <!-- No warning on Linux/OSX - it's much more likely for libdiscid to be installed there as a system library. -->
+    <Warning Condition="'$(OS)' != 'Unix' and '@(ExtraFiles)' == ''" Text="No native libdiscid files available in this package; you'll have to obtain them yourself."/>
     <Copy SourceFiles="@(ExtraFiles)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true"/>
   </Target>
 </Project>

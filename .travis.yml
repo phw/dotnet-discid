@@ -8,7 +8,7 @@ install:
   - sudo apt-get install -qq libdiscid0-dev
   - nuget restore dotnet-discid.sln
 script:
+  - xbuild /p:Configuration=Debug   dotnet-discid.sln
   - xbuild /p:Configuration=Release dotnet-discid.sln
+  - nunit-console dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
   - nunit-console dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll
-# env:
-#   - LD_LIBRARY_PATH=/usr/lib/:/usr/lib/x86_64-linux-gnu/

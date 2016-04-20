@@ -10,5 +10,5 @@ install:
 script:
   - xbuild /p:Configuration=Debug   dotnet-discid.sln
   - xbuild /p:Configuration=Release dotnet-discid.sln
-  - nunit-console dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
-  - nunit-console dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll
+  - nunit-console -framework=4.0 dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
+  - nunit-console -framework=4.0 dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll

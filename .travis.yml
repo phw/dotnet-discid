@@ -2,10 +2,10 @@ language: csharp
 addons:
   apt:
     packages:
-    - libdiscid-dev # libdiscid0-dev on trusty and later, but whitelisting that doesn't work
     - nunit-console
-dist: precise
+sudo: required
 install:
+  - sudo apt-get install -qq libdiscid0-dev
   - nuget restore dotnet-discid.sln
 script:
   - xbuild /p:Configuration=Release dotnet-discid.sln

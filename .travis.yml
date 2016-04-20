@@ -2,8 +2,9 @@ language: csharp
 addons:
   apt:
     packages:
-    - libdiscid0-dev
+    - libdiscid-dev # libdiscid0-dev on trusty and later, but whitelisting that doesn't work
     - nunit-console
+dist: precise
 install:
   - nuget restore dotnet-discid.sln
 script:

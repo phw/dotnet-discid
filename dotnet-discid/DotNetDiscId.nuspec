@@ -15,8 +15,8 @@
     <tags>libdiscid discid CD audio MusicBrainz</tags>
   </metadata>
   <files>
-    <file src="NuGet\DotNetDiscId.targets" target="build" />
-    <file src="NuGet\native\win32\discid.dll" target="build\native\win32" />
-    <file src="NuGet\native\win64\discid.dll" target="build\native\win64" />
+    <file src="NuGet/DotNetDiscId.targets" target="build" />
+    <file src="NuGet/native/win32/discid.dll" target="build/native/win32" />
+    <file src="NuGet/native/win64/discid.dll" target="build/native/win64" />
   </files>
 </package>

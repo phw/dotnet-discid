@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="DiscIdCopyNativeWin32"
-          Condition="'$(Platform)' == 'x86' or '$(Platform)' == 'AnyCPU'"
-          AfterTargets="AfterBuild">
-    <Message Text="Copying x86 discid.dll..." />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\packages\DotNetDiscId.0.1.1.1\build\native\win32\discid.dll"
-          DestinationFolder="$(TargetDir)"
-          SkipUnchangedFiles="true"></Copy>
-  </Target>
-  <Target Name="DiscIdCopyNativeWin64"
-          Condition="'$(Platform)' == 'x64'"
-          AfterTargets="AfterBuild">
-    <Message Text="Copying x64 discid.dll..." />
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\..\packages\DotNetDiscId.0.1.1.1\build\native\win64\discid.dll"
-          DestinationFolder="$(TargetDir)"
-          SkipUnchangedFiles="true"></Copy>
+  <Target Name="CopyNativeDiscIdFiles" AfterTargets="AfterBuild">
+    <PropertyGroup>
+      <!-- Unconditional Fallback -->
+      <NativeFolder>unknown</NativeFolder>
+      <!-- Simple Cases -->
+      <NativeFolder Condition="'$(OS)' == 'Unix'">xbuild-linux-or-osx</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'x86'">win32</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'x64'">win64</NativeFolder>
+      <!-- Any CPU is trickier; assume 64-bit except if 32-bit is preferred and/or we're on a 32-bit OS. -->
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU'">win64</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU' and '$(Prefer32Bit)' == 'true'">win32</NativeFolder>
+      <NativeFolder Condition="'$(OS)' != 'Unix' and '$(Platform)' == 'AnyCPU' and '$(MSBuildExtensionsPath64)' == ''">win32</NativeFolder>
+    </PropertyGroup>
+    <ItemGroup>
+      <ExtraFiles Include="$(MSBuildThisFileDirectory)native\$(NativeFolder)\*"/>
+    </ItemGroup>
+    <!-- No warning on Linux/OSX - it's much more likely for libdiscid to be installed there as a system library. -->
+    <Warning Condition="'$(OS)' != 'Unix' and '@(ExtraFiles)' == ''" Text="No native libdiscid files available in this package; you'll have to obtain them yourself."/>
+    <Copy SourceFiles="@(ExtraFiles)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true"/>
   </Target>
 </Project>

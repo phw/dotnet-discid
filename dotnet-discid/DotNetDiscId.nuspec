@@ -10,13 +10,13 @@
     <projectUrl>https://github.com/phw/dotnet-discid</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright 2013</copyright>
+    <releaseNotes>Fixed NuGet package targets, and bumped included libdiscid to 0.6.1.</releaseNotes>
+    <copyright>Copyright 2013, 2015, 2016 $author$</copyright>
     <tags>libdiscid discid CD audio MusicBrainz</tags>
   </metadata>
   <files>
-    <file src="NuGet\DotNetDiscId.targets" target="build" />
-    <file src="NuGet\win32\discid.dll" target="build\native\win32" />
-    <file src="NuGet\win64\discid.dll" target="build\native\win64" />
+    <file src="NuGet/DotNetDiscId.targets" target="build" />
+    <file src="NuGet/native/win32/discid.dll" target="build/native/win32" />
+    <file src="NuGet/native/win64/discid.dll" target="build/native/win64" />
   </files>
 </package>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BuildNuGetPackage" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Release' and '$(OS)' != 'Unix'">
+    <Exec Command="nuget pack $(MSBuildProjectFullPath) -Properties Configuration=Release -OutputDirectory package" WorkingDirectory="$(MSBuildThisFileDirectory)"/>
+  </Target>
+  <Target Name="CleanNuGetPackages" AfterTargets="Clean" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <BuiltPackages Include="$(MSBuildThisFileDirectory)\package\*.nupkg"/>
+    </ItemGroup>
+    <Delete Files="@(BuiltPackages)"/>
+  </Target>
+</Project>

@@ -1,9 +1,14 @@
-language: c
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq mono-devel mono-gmcs nunit-console libdiscid0-dev
-env:
-  - LD_LIBRARY_PATH=/usr/lib/:/usr/lib/x86_64-linux-gnu/
+language: csharp
+addons:
+  apt:
+    packages:
+    - nunit-console
+sudo: required
+install:
+  - sudo apt-get install -qq libdiscid0-dev
+  - nuget restore dotnet-discid.sln
 script:
-  - xbuild
-  - nunit-console dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll
+  - xbuild /p:Configuration=Debug   dotnet-discid.sln
+  - xbuild /p:Configuration=Release dotnet-discid.sln
+  - nunit-console -framework=4.0 dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
+  - nunit-console -framework=4.0 dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll

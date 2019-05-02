@@ -1,0 +1,29 @@
+version: 0.2.0.{build}
+configuration: Release
+nuget:
+  disable_publish_on_pr: true
+
+before_build:
+- cmd: nuget restore
+
+build:
+  publish_nuget: true
+  verbosity: minimal
+
+artifacts:
+- path: dotnet-discid\NuGet\**\DotNetDiscId.*.nupkg
+
+deploy:
+- provider: NuGet
+  api_key:
+    secure: zX+Zs9IRgYfiGazwM2ARMOF94aRZ/NYFmGD6tY/RkRAAaOy+YBcCiV/Dhy/uNOHB
+  artifact: /DotNetDiscId\..*\.nupkg/
+  on:
+    APPVEYOR_REPO_TAG: true
+- provider: GitHub
+  auth_token:
+    secure: kHqNGNWtvvrzy3tvjKyFHzUhOW3+dnDn+ftnItC8Eykfv+jEUf5jGaN27aN9IbWH
+  artifact: /DotNetDiscId\..*\.nupkg/
+  force_update: true
+  on:
+    APPVEYOR_REPO_TAG: true

@@ -56,6 +56,7 @@ namespace DiscIdExample
                         Console.Out.WriteLine("  ISRC  : {0}", track.Isrc);
                     }
 
+                    Console.Out.WriteLine("\nPress any key to exit");
                     Console.In.ReadLine();
                 }
             }

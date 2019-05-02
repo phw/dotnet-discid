@@ -3,9 +3,8 @@ addons:
   apt:
     packages:
     - nunit-console
-sudo: required
+    - libdiscid0-dev
 install:
-  - sudo apt-get install -qq libdiscid0-dev
   - nuget restore dotnet-discid.sln
 script:
   - xbuild /p:Configuration=Debug   dotnet-discid.sln

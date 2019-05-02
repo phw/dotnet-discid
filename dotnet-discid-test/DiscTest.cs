@@ -43,7 +43,7 @@ namespace DiscId.Test
                                         124833, 147278, 166336, 182560 };
             int[] lengths = new int[] { 18751, 20837, 19819, 19595, 20974,
                                         24707, 22445, 19058, 16224, 23975 };
-            
+
             var disc = Disc.Put(firstTrack, sectors, offsets);
 
             Assert.AreEqual(discId, disc.Id);
@@ -54,13 +54,13 @@ namespace DiscId.Test
             Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
         }
 
-		[Test, ExpectedException(typeof(DiscIdException))]
+        [Test, ExpectedException(typeof(DiscIdException))]
         public void PutErrorTest()
         {
             Disc.Put(-1, 0, new int[] {});
         }
 
-		[Test, ExpectedException(typeof(DiscIdException))]
+        [Test, ExpectedException(typeof(DiscIdException))]
         public void ReadErrorTest()
         {
             Disc.Read("invalid_device_string");
@@ -75,8 +75,8 @@ namespace DiscId.Test
         [Test]
         public void GetFeatureListTest()
         {
-			var features = Disc.GetFeatureList();
-			Assert.IsTrue(features.Contains(Features.Read));
+            var features = Disc.GetFeatureList();
+            Assert.IsTrue(features.Contains(Features.Read));
         }
     }
 }

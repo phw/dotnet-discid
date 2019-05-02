@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.2 (2019-05-02)
+* Fixed setting license in NuGet metadata.
+
 ## 0.2.1 (2019-05-02)
 * Fixed NuGet targets.
 * Includes libdiscid 0.6.1.

@@ -203,6 +203,10 @@ namespace DiscId
         {
             var lastTrack = offsets.Length - 1 + firstTrack;
 
+            if (firstTrack < 1 || firstTrack > 99 || lastTrack < 1 || lastTrack > 99) {
+              throw new DiscIdException("Invalid track counts, track count must be between 1 and 99");
+            }
+
             var cOffsets = new int[MaxOffsetLength];
             cOffsets[0] = sectors;
             offsets.CopyTo(cOffsets, firstTrack);

@@ -54,6 +54,28 @@ namespace DiscId.Test
             Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
         }
 
+        [Test]
+        public void PutFirstTrackGreaterOneTest()
+        {
+            string discId = "ByBKvJM1hBL7XtvsPyYtIjlX0Bw-";
+            int firstTrack = 3;
+            int lastTrack = 12;
+            int sectors = 206535;
+            int[] offsets = new int[] { 150, 18901, 39738, 59557, 79152, 100126,
+                                        124833, 147278, 166336, 182560 };
+            int[] lengths = new int[] { 18751, 20837, 19819, 19595, 20974,
+                                        24707, 22445, 19058, 16224, 23975 };
+
+            var disc = Disc.Put(firstTrack, sectors, offsets);
+
+            Assert.AreEqual(discId, disc.Id);
+            Assert.AreEqual(firstTrack, disc.FirstTrackNumber);
+            Assert.AreEqual(lastTrack, disc.LastTrackNumber);
+            Assert.AreEqual(sectors, disc.Sectors);
+            Assert.AreEqual(offsets, disc.Tracks.Select(t => t.Offset).ToArray());
+            Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
+        }
+
         [Test, ExpectedException(typeof(DiscIdException))]
         public void PutErrorTest()
         {

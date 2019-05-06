@@ -35,7 +35,7 @@ namespace DiscId
             tracks = new Dictionary<int, Track>();
         }
 
-        ~Disc() 
+        ~Disc()
         {
             Dispose(false);
         }
@@ -180,7 +180,7 @@ namespace DiscId
                         this.tracks[number] = track;
                     }
 
-                    yield return track; 
+                    yield return track;
                 }
             }
         }
@@ -205,7 +205,7 @@ namespace DiscId
 
             var cOffsets = new int[MaxOffsetLength];
             cOffsets[0] = sectors;
-            offsets.CopyTo(cOffsets, 1);
+            offsets.CopyTo(cOffsets, firstTrack);
 
             if (!NativeMethods.discid_put(handle, firstTrack, lastTrack, cOffsets))
             {
@@ -220,7 +220,7 @@ namespace DiscId
 
         private void Dispose(bool disposing)
         {
-            if (handle != IntPtr.Zero) 
+            if (handle != IntPtr.Zero)
             {
                 NativeMethods.discid_free(handle);
                 handle = IntPtr.Zero;

@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\dotnet-discid.snk</AssemblyOriginatorKeyFile>
-    <ReleaseVersion>0.2.2</ReleaseVersion>
+    <ReleaseVersion>0.2.3</ReleaseVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

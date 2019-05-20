@@ -1,4 +1,4 @@
-# .NET bindings for MusicBrainz libdiscid TEST
+# .NET bindings for MusicBrainz libdiscid
 [![Build Status](https://travis-ci.org/phw/dotnet-discid.svg?branch=master)](https://travis-ci.org/phw/dotnet-discid)
 [![Build status](https://ci.appveyor.com/api/projects/status/i94b2wovn11tm6hy?svg=true)](https://ci.appveyor.com/project/phw/dotnet-discid)
 [![NuGet version](https://badge.fury.io/nu/DotNetDiscId.svg)](http://badge.fury.io/nu/DotNetDiscId)

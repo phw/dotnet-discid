@@ -1,4 +1,4 @@
-# .NET bindings for MusicBrainz libdiscid
+# .NET bindings for MusicBrainz libdiscid TEST
 [![Build Status](https://travis-ci.org/phw/dotnet-discid.svg?branch=master)](https://travis-ci.org/phw/dotnet-discid)
 [![Build status](https://ci.appveyor.com/api/projects/status/i94b2wovn11tm6hy?svg=true)](https://ci.appveyor.com/project/phw/dotnet-discid)
 [![NuGet version](https://badge.fury.io/nu/DotNetDiscId.svg)](http://badge.fury.io/nu/DotNetDiscId)
@@ -42,7 +42,7 @@ Below is a simple usage example. The dotnet-discid-example project provides a mo
 
 ```C#
 try
-{ 
+{
     string device = DiscId.Disc.DefaultDevice;
     using (var disc = DiscId.Disc.Read(device, Features.Mcn | Features.Isrc))
     {

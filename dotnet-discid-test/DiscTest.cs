@@ -76,16 +76,22 @@ namespace DiscId.Test
             Assert.AreEqual(lengths, disc.Tracks.Select(t => t.Sectors).ToArray());
         }
 
-        [Test, ExpectedException(typeof(DiscIdException))]
+        [Test]
         public void PutErrorTest()
         {
-            Disc.Put(-1, 0, new int[] {});
+            Assert.Throws<DiscIdException>(delegate
+            {
+                Disc.Put(-1, 0, new int[] { });
+            });
         }
 
-        [Test, ExpectedException(typeof(DiscIdException))]
+        [Test]
         public void ReadErrorTest()
         {
-            Disc.Read("invalid_device_string");
+            Assert.Throws<DiscIdException>(delegate
+            {
+                Disc.Read("invalid_device_string");
+            });
         }
 
         [Test]

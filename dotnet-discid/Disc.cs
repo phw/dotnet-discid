@@ -71,9 +71,12 @@ namespace DiscId
 
         public static bool HasFeatures(Features features)
         {
-            bool result = FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Read);
-            result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Mcn);
-            result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, Features.Isrc);
+            bool result = true;
+            foreach (Features feature in Enum.GetValues(typeof(Features)))
+            {
+              result &= FeatureUtils.TestFeatureIsAvailableOrNotSet(features, feature);
+            }
+
             return result;
         }
 

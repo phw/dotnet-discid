@@ -1,9 +1,10 @@
 language: csharp
+dist: xenial
 addons:
   apt:
     packages:
     - nunit-console
-    - libdiscid0-dev
+    - libdiscid-dev
 install:
   - nuget restore dotnet-discid.sln
 script:

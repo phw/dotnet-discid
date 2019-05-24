@@ -1,13 +1,14 @@
 language: csharp
+dist: xenial
 addons:
   apt:
     packages:
-    - nunit-console
-    - libdiscid0-dev
+    - libdiscid-dev
 install:
   - nuget restore dotnet-discid.sln
+  - nuget install NUnit.Console -Version 3.10.0 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Debug   dotnet-discid.sln
-  - xbuild /p:Configuration=Release dotnet-discid.sln
-  - nunit-console -framework=4.0 dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
-  - nunit-console -framework=4.0 dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll
+  - msbuild /p:Configuration=Release dotnet-discid.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.10.0/tools/nunit3-console.exe dotnet-discid-test/bin/Release/DotNetDiscIdTest.dll
+  - msbuild /p:Configuration=Debug dotnet-discid.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.10.0/tools/nunit3-console.exe dotnet-discid-test/bin/Debug/DotNetDiscIdTest.dll

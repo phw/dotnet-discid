@@ -22,18 +22,18 @@ package contains the .NET assembly and the corresponding native DLLs (both 32 an
 You just have to make sure to set your build configuration to either x86 or x64 instead
 of AnyCPU.
 
-If you compile the DotNetDiscId.dll yourself and use it in a project make sure you also
+If you compile the `DotNetDiscId.dll` yourself and use it in a project make sure you also
 have the native libdiscid libraries available. Pre-compiled versions of libdiscid for
 Windows can be downloaded from http://musicbrainz.org/doc/libdiscid . On Windows it is
-recommended to ship the discid.dll in your project. If you are using Mono on other
-platforms such as Linux or OSX you can use a system wide installation of libdiscid, e.g.
+recommended to ship the `discid.dll` in your project. If you are using Mono on other
+platforms such as Linux or macOS you can use a system wide installation of libdiscid, e.g.
 installed using the platform's package manager.
 
-Source and binary releases of dotnet-discid are available at:
-http://users.musicbrainz.org/~outsidecontext/dotnet-discid/
+Source and binary releases of dotnet-discid are available on
+[GitHub](https://github.com/phw/dotnet-discid/releases).
 
 ## Usage
-In order to use dotnet-discid you have to reference the DotNetDiscId.dll assembly in
+In order to use dotnet-discid you have to reference the `DotNetDiscId.dll` assembly in
 your project and make sure the native discid library is available (see notes above).
 
 Below is a simple usage example. The dotnet-discid-example project provides a more
@@ -41,7 +41,7 @@ Below is a simple usage example. The dotnet-discid-example project provides a mo
 
 ```C#
 try
-{ 
+{
     string device = DiscId.Disc.DefaultDevice;
     using (var disc = DiscId.Disc.Read(device, Features.Mcn | Features.Isrc))
     {

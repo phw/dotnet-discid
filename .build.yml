@@ -1,0 +1,8 @@
+image: alpine/latest
+packages:
+  - jq
+secrets:
+  - 9e63c24b-adf4-4fa3-8af9-0da907639287
+tasks:
+  - appveyor: |
+      ./dotnet-discid/appveyor-webhook.sh

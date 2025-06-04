@@ -1,6 +1,9 @@
 # .NET bindings for MusicBrainz libdiscid
-[![Build status](https://ci.appveyor.com/api/projects/status/i94b2wovn11tm6hy?svg=true)](https://ci.appveyor.com/project/phw/dotnet-discid)
+[![Build status](https://ci.appveyor.com/api/projects/status/0w5q0rnkjs2gtx7o?svg=true)](https://ci.appveyor.com/project/phw/dotnet-discid-swq07)
 [![NuGet version](https://badge.fury.io/nu/DotNetDiscId.svg)](http://badge.fury.io/nu/DotNetDiscId)
+
+> [!NOTE]
+> **This project has moved to https://git.sr.ht/~phw/dotnet-discid**
 
 ## About
 dotnet-discid provides .NET bindings for the MusicBrainz DiscID library [libdiscid](https://github.com/metabrainz/libdiscid).
@@ -30,14 +33,14 @@ platforms such as Linux or macOS you can use a system wide installation of libdi
 installed using the platform's package manager.
 
 Source and binary releases of dotnet-discid are available on
-[GitHub](https://github.com/phw/dotnet-discid/releases).
+[SourceHut](https://git.sr.ht/~phw/dotnet-discid/refs).
 
 ## Usage
 In order to use dotnet-discid you have to reference the `DotNetDiscId.dll` assembly in
 your project and make sure the native discid library is available (see notes above).
 
 Below is a simple usage example. The dotnet-discid-example project provides a more
-[complete example](https://github.com/phw/dotnet-discid/blob/master/dotnet-discid-example/Program.cs).
+[complete example](https://git.sr.ht/~phw/dotnet-discid/tree/main/item/dotnet-discid-example/Program.cs).
 
 ```C#
 try
@@ -62,10 +65,10 @@ catch (DiscIdException ex)
 
 ## Contribute
 The source code for dotnet-discid is available on
-[GitHub](https://github.com/phw/dotnet-discid).
+[SourceHut](https://git.sr.ht/~phw/dotnet-discid).
 
 Please report any issues on the
-[issue tracker](https://github.com/phw/dotnet-discid/issues).
+[issue tracker](https://todo.sr.ht/~phw/discid-bindings).
 
 ## License
 dotnet-discid is released under the GNU Lesser General Public License Version 3. See LICENSE.txt for details.
